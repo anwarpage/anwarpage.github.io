@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 360" width="1080" height="360" fill="none">
+	<defs>
+		<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+			<path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#334155" />
+		</marker>
+	</defs>
+
+	<!-- Pure White Background -->
+	<rect width="1080" height="360" fill="#ffffff" />
+
+	<!-- Step 1: MRI Input (Pill) -->
+	<rect x="24" y="148" width="156" height="64" rx="32" fill="#f8fafc" stroke="#334155" stroke-width="1.75" />
+	<text x="102" y="176" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">MRI Scan Input</text>
+	<text x="102" y="194" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#64748b">POST /predict/ (640px)</text>
+
+	<!-- Arrow 1 -> 2 -->
+	<line x1="180" y1="180" x2="224" y2="180" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+
+	<!-- Step 2: Backbone & Feature Proposals -->
+	<rect x="232" y="140" width="196" height="80" rx="10" fill="#ffffff" stroke="#334155" stroke-width="1.75" />
+	<text x="330" y="170" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Feature &amp; RoI Extraction</text>
+	<text x="330" y="188" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#64748b">Backbone FPN + Proposals</text>
+	<text x="330" y="204" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#94a3b8">conf=0.5 | iou=0.5</text>
+
+	<!-- Split Arrows from Step 2 to 3 Parallel Branches -->
+	<path d="M 428 180 L 462 180 L 462 76 L 496 76" fill="none" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+	<line x1="428" y1="180" x2="496" y2="180" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+	<path d="M 428 180 L 462 180 L 462 284 L 496 284" fill="none" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+
+	<!-- Branch A: Classification -->
+	<rect x="504" y="44" width="212" height="64" rx="10" fill="#ffffff" stroke="#334155" stroke-width="1.75" />
+	<text x="610" y="72" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">1. Tumor Category</text>
+	<text x="610" y="90" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#64748b">Glioma | Meningioma | Pituitary</text>
+
+	<!-- Branch B: Bounding Box Regression -->
+	<rect x="504" y="148" width="212" height="64" rx="10" fill="#ffffff" stroke="#334155" stroke-width="1.75" />
+	<text x="610" y="176" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">2. Bounding Box</text>
+	<text x="610" y="194" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#64748b">box.xyxy [x1, y1, x2, y2]</text>
+
+	<!-- Branch C: Pixel-Level Mask Branch -->
+	<rect x="504" y="252" width="212" height="64" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="1.75" />
+	<text x="610" y="280" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#15803d">3. Segmentation Mask</text>
+	<text x="610" y="298" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#16a34a">FCN Mask (mask &gt; 0.5)</text>
+
+	<!-- Merge Arrows from 3 Branches to Step 4 -->
+	<path d="M 716 76 L 750 76 L 750 180 L 784 180" fill="none" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+	<line x1="716" y1="180" x2="784" y2="180" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+	<path d="M 716 284 L 750 284 L 750 180 L 784 180" fill="none" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+
+	<!-- Step 4: OpenCV Overlay & JSON Response -->
+	<rect x="792" y="132" width="264" height="96" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.75" />
+	<text x="924" y="164" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">OpenCV Mask Overlay &amp; UI</text>
+	<text x="924" y="184" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#64748b">cv2.rectangle + mask color</text>
+	<text x="924" y="204" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#16a34a">Class + Confidence% + Latency</text>
+</svg>

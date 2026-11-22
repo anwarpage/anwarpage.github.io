@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 300" width="1080" height="300" fill="none">
+	<defs>
+		<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+			<path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#334155" />
+		</marker>
+	</defs>
+
+	<rect width="1080" height="300" fill="#ffffff" />
+
+	<!-- Step 1: Quran API with fallback (Pill) -->
+	<rect x="24" y="96" width="212" height="84" rx="42" fill="#f8fafc" stroke="#334155" stroke-width="1.75" />
+	<text x="130" y="126" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">1. Qur'an API</text>
+	<text x="130" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#64748b">gading.dev → alquran.cloud</text>
+	<text x="130" y="162" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#94a3b8">3 retries · 1s/2s/4s backoff</text>
+
+	<line x1="236" y1="138" x2="276" y2="138" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+
+	<!-- Step 2: Local cache -->
+	<rect x="284" y="96" width="224" height="84" rx="10" fill="#ffffff" stroke="#334155" stroke-width="1.75" />
+	<text x="396" y="126" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">2. 30-Day Local Cache</text>
+	<text x="396" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#64748b">SharedPreferences</text>
+	<text x="396" y="162" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#94a3b8">stale copy served offline</text>
+
+	<line x1="508" y1="138" x2="548" y2="138" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+
+	<!-- Step 3: Merge transliteration -->
+	<rect x="556" y="96" width="228" height="84" rx="10" fill="#ffffff" stroke="#334155" stroke-width="1.75" />
+	<text x="670" y="126" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">3. Surah Detail</text>
+	<text x="670" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#64748b">Arabic + translation</text>
+	<text x="670" y="162" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#94a3b8">+ merged transliteration</text>
+
+	<line x1="784" y1="138" x2="824" y2="138" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+
+	<!-- Step 4: Tasmi' player -->
+	<rect x="832" y="96" width="224" height="84" rx="10" fill="#f0fdfa" stroke="#1abc9c" stroke-width="1.75" />
+	<text x="944" y="126" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f766e">4. Tasmi' Player</text>
+	<text x="944" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#64748b">ayah-by-ayah murottal</text>
+	<text x="944" y="162" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#94a3b8">repeat 1–15× · 0.5–2× speed</text>
+
+	<rect x="24" y="214" width="1032" height="44" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.25" stroke-dasharray="5 4" />
+	<text x="540" y="241" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#475569">Home · GPS location → Aladhan prayer times (cached per coordinate) · reverse-geocoded city · Hijri date</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 300" width="1080" height="300" fill="none">
+	<defs>
+		<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+			<path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#334155" />
+		</marker>
+	</defs>
+
+	<rect width="1080" height="300" fill="#ffffff" />
+
+	<!-- Step 1: Admin console (Pill) -->
+	<rect x="24" y="108" width="212" height="84" rx="42" fill="#f8fafc" stroke="#334155" stroke-width="1.75" />
+	<text x="130" y="138" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">1. Admin Console</text>
+	<text x="130" y="157" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#64748b">CRUD · status · posisi</text>
+	<text x="130" y="174" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#94a3b8">CSV import / export</text>
+
+	<line x1="236" y1="150" x2="276" y2="150" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+
+	<!-- Step 2: Supabase -->
+	<rect x="284" y="108" width="224" height="84" rx="10" fill="#ffffff" stroke="#334155" stroke-width="1.75" />
+	<text x="396" y="138" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">2. Supabase Postgres</text>
+	<text x="396" y="157" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#64748b">RLS + current_app_role()</text>
+	<text x="396" y="174" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#94a3b8">audit trigger per change</text>
+
+	<line x1="508" y1="150" x2="548" y2="150" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+
+	<!-- Step 3: SvelteKit server mapping -->
+	<rect x="556" y="108" width="228" height="84" rx="10" fill="#ffffff" stroke="#334155" stroke-width="1.75" />
+	<text x="670" y="138" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">3. SvelteKit Server</text>
+	<text x="670" y="157" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#64748b">8 public columns only</text>
+	<text x="670" y="174" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#94a3b8">normalize status flow</text>
+
+	<line x1="784" y1="150" x2="824" y2="150" stroke="#334155" stroke-width="1.75" marker-end="url(#arr)" />
+
+	<!-- Step 4: Public queue -->
+	<rect x="832" y="108" width="224" height="84" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.75" />
+	<text x="944" y="138" text-anchor="middle" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#15803d">4. Public Queue</text>
+	<text x="944" y="157" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#64748b">/layanan/perling · pertek</text>
+	<text x="944" y="174" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#94a3b8">search · filter · Ctrl+K</text>
+
+	<text x="540" y="244" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#64748b">Officers write through role-checked routes; citizens read a sanitized, status-normalized view of the same tables</text>
+</svg>
