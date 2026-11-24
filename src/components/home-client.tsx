@@ -10,6 +10,8 @@ import type { BlogEntry } from '@/lib/blog';
 import type { ProjectSummary } from '@/lib/projects';
 
 const SHORT_PROJECT_NAMES: Record<string, string> = {
+  sikopling: 'Sikopling',
+  silira: 'Silira',
   'childfall-detection': 'Child Fall Detection',
   'rupiah-denomination': 'Rupiah Denomination'
 };
@@ -116,10 +118,8 @@ export function HomeView({
                         {project.year}
                       </time>
                     )}
-                    <span className="grow pr-3 text-[16px] leading-[1.45]">
-                      <span className="soft-link font-medium text-[var(--text-heading)]">
-                        {name}
-                      </span>
+                    <span className="grow pr-3 text-[16px] leading-[1.45] text-[var(--text-heading)]">
+                      <span className="soft-link transition-colors">{name}</span>
                     </span>
                     <span
                       aria-hidden="true"
