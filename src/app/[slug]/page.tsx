@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { DinoCompassVignette } from '@/components/dino-mark';
 import { MarkdownArticle } from '@/components/markdown-article';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { beliefsSections, contentNavLinks } from '@/content/notes';
@@ -86,7 +85,7 @@ export default async function EntryPage({
       <article className="reading-column">
         <BackBar />
         <header className="mb-8">
-          <h1 className="text-[28px] leading-[1.2] font-medium tracking-[-0.02em] text-[var(--text-heading)]">
+          <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
             Know me better
           </h1>
           <p className="mt-1.5 font-sans text-[13px] text-[var(--text-nav)]">
@@ -127,17 +126,19 @@ export default async function EntryPage({
         </div>
 
         <section className="mt-10 space-y-5">
-          <h2 className="font-sans text-[13px] font-normal text-[var(--text-nav)]">Experience</h2>
+          <h2 className="section-heading">
+            Experience
+          </h2>
           {experiences.en.map((item) => (
             <div key={`${item.org}-${item.period}`}>
               <div className="flex flex-col justify-between gap-0.5 sm:flex-row sm:items-baseline">
-                <h3 className="text-[17.5px] font-medium text-[var(--text-heading)]">{item.role}</h3>
+                <h3 className="text-[17.5px] font-semibold text-[var(--text-heading)]">{item.role}</h3>
                 <span className="font-sans text-[13px] text-[var(--text-nav)]">{item.period}</span>
               </div>
               <p className="font-sans text-[13.5px] text-[var(--text-nav)]">
                 {item.org} · {item.location}
               </p>
-              <ul className="mt-2 list-disc space-y-1 pl-5 text-[15.5px] leading-[1.68] text-[var(--text-copy)]">
+              <ul className="square-list mt-2 space-y-1 text-[16px] leading-[1.68] text-[var(--text-copy)]">
                 {item.points.map((point) => (
                   <li key={point}>{point}</li>
                 ))}
@@ -147,11 +148,13 @@ export default async function EntryPage({
         </section>
 
         <section className="mt-10 space-y-5">
-          <h2 className="font-sans text-[13px] font-normal text-[var(--text-nav)]">Education</h2>
+          <h2 className="section-heading">
+            Education
+          </h2>
           {education.en.map((item) => (
             <div key={item.school}>
               <div className="flex flex-col justify-between gap-0.5 sm:flex-row sm:items-baseline">
-                <h3 className="text-[17.5px] font-medium text-[var(--text-heading)]">
+                <h3 className="text-[17.5px] font-semibold text-[var(--text-heading)]">
                   {item.school}
                 </h3>
                 <span className="font-sans text-[13px] text-[var(--text-nav)]">{item.period}</span>
@@ -160,7 +163,7 @@ export default async function EntryPage({
                 {item.degree} · {item.meta}
               </p>
               {item.notes && (
-                <p className="mt-1.5 text-[15.5px] leading-[1.68] text-[var(--text-copy)]">
+                <p className="mt-1.5 text-[16px] leading-[1.68] text-[var(--text-copy)]">
                   {item.notes}
                 </p>
               )}
@@ -169,11 +172,13 @@ export default async function EntryPage({
         </section>
 
         <section className="mt-10 space-y-3">
-          <h2 className="font-sans text-[13px] font-normal text-[var(--text-nav)]">Focus</h2>
-          <ul className="space-y-2.5 text-[15.5px] leading-[1.68] text-[var(--text-copy)]">
+          <h2 className="section-heading">
+            Focus
+          </h2>
+          <ul className="square-list space-y-2.5 text-[16px] leading-[1.68] text-[var(--text-copy)]">
             {expertiseAreas.en.map((area) => (
               <li key={area.title}>
-                <strong className="font-medium text-[var(--text-heading)]">{area.title}:</strong>{' '}
+                <strong className="font-semibold text-[var(--text-heading)]">{area.title}:</strong>{' '}
                 {area.detail}
               </li>
             ))}
@@ -181,7 +186,9 @@ export default async function EntryPage({
         </section>
 
         <section className="mt-10 space-y-2.5">
-          <h2 className="font-sans text-[13px] font-normal text-[var(--text-nav)]">Toolkit</h2>
+          <h2 className="section-heading">
+            Toolkit
+          </h2>
           {toolkitGroups.map((group) => (
             <p key={group.label} className="text-[15.5px] leading-[1.68] text-[var(--text-copy)]">
               <strong className="font-medium text-[var(--text-heading)]">{group.label}:</strong>{' '}
@@ -200,7 +207,7 @@ export default async function EntryPage({
       <article className="reading-column">
         <BackBar />
         <header className="mb-8">
-          <h1 className="text-[28px] leading-[1.2] font-medium tracking-[-0.02em] text-[var(--text-heading)]">
+          <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
             See my work
           </h1>
           <p className="mt-2 text-[16.5px] leading-[1.7] text-[var(--text-secondary)]">
@@ -208,25 +215,41 @@ export default async function EntryPage({
           </p>
         </header>
 
-        <div className="divide-y divide-[var(--line-subtle)]">
-          {projects.map((project) => (
-            <Link
-              key={project.slug}
-              href={`/${project.slug}`}
-              className="group block py-4 first:pt-0 no-underline"
-            >
-              <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-                <span className="soft-link text-[17.5px] leading-[1.4]">{project.title}</span>
-                <span className="shrink-0 font-sans text-[13px] tabular-nums text-[var(--text-nav)]">
-                  {project.dateLabel}
-                </span>
-              </div>
-              <p className="mt-1.5 text-[15px] leading-[1.65] text-[var(--text-secondary)]">
-                {project.description}
-              </p>
-            </Link>
-          ))}
-        </div>
+        <ul className="space-y-2">
+          {projects.map((project, index) => {
+            const showYear = index === 0 || projects[index - 1].year !== project.year;
+            return (
+              <li key={project.slug} className="group">
+                <Link
+                  href={`/${project.slug}`}
+                  className={`flex items-start py-2.5 no-underline ${
+                    showYear ? '' : 'ml-10 md:ml-14'
+                  }`}
+                >
+                  {showYear && (
+                    <time
+                      dateTime={project.date}
+                      className="w-10 md:w-14 inline-block self-start shrink-0 font-sans text-xs tabular-nums text-[var(--text-nav)] mt-1.5"
+                    >
+                      {project.year}
+                    </time>
+                  )}
+                  <div className="grow pr-3">
+                    <span className="soft-link text-pretty text-[17px] leading-[1.4] font-medium text-[var(--text-heading)]">
+                      {project.title}
+                    </span>
+                    <p className="mt-1 text-pretty text-[15px] leading-[1.62] text-[var(--text-secondary)]">
+                      {project.description}
+                    </p>
+                  </div>
+                  <span className="shrink-0 self-start font-sans text-xs text-[var(--text-nav)] mt-1.5">
+                    {project.shortType}
+                  </span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </article>
     );
   }
@@ -238,7 +261,7 @@ export default async function EntryPage({
       <article className="reading-column">
         <BackBar />
         <header className="mb-8">
-          <h1 className="text-[28px] leading-[1.2] font-medium tracking-[-0.02em] text-[var(--text-heading)]">
+          <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
             Things I wrote
           </h1>
           <p className="mt-2 text-[16.5px] leading-[1.7] text-[var(--text-secondary)]">
@@ -247,34 +270,50 @@ export default async function EntryPage({
         </header>
 
         <section>
-          <h2 className="mb-3 font-sans text-[13px] font-normal text-[var(--text-nav)]">
+          <h2 className="section-heading mb-3">
             Essays on Medium
           </h2>
-          <div className="divide-y divide-[var(--line-subtle)]">
-            {posts.map((post) => (
-              <a
-                key={post.slug}
-                href={post.mediumUrl ?? 'https://medium.com/@mkaspulanwar'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block py-4 first:pt-0 no-underline"
-              >
-                <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-                  <span className="soft-link text-[17.5px] leading-[1.4]">{post.title}</span>
-                  <span className="shrink-0 font-sans text-[13px] text-[var(--text-nav)]">
-                    Medium ↗
-                  </span>
-                </div>
-                <p className="mt-1.5 text-[15px] leading-[1.65] text-[var(--text-secondary)]">
-                  {post.description}
-                </p>
-              </a>
-            ))}
-          </div>
+          <ul className="space-y-2">
+            {posts.map((post, index) => {
+              const showYear = index === 0 || posts[index - 1].year !== post.year;
+              return (
+                <li key={post.slug} className="group">
+                  <a
+                    href={post.mediumUrl ?? 'https://medium.com/@mkaspulanwar'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-start py-2.5 no-underline ${
+                      showYear ? '' : 'ml-10 md:ml-14'
+                    }`}
+                  >
+                    {showYear && (
+                      <time
+                        dateTime={post.date}
+                        className="w-10 md:w-14 inline-block self-start shrink-0 font-sans text-xs tabular-nums text-[var(--text-nav)] mt-1.5"
+                      >
+                        {post.year}
+                      </time>
+                    )}
+                    <div className="grow pr-3">
+                      <span className="soft-link text-pretty text-[17px] leading-[1.4] font-medium text-[var(--text-heading)]">
+                        {post.title}
+                      </span>
+                      <p className="mt-1 text-pretty text-[15px] leading-[1.62] text-[var(--text-secondary)]">
+                        {post.description}
+                      </p>
+                    </div>
+                    <span className="shrink-0 self-start font-sans text-xs text-[var(--text-nav)] mt-1.5">
+                      {post.shortType} ↗
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
         </section>
 
         <section className="mt-10">
-          <h2 className="mb-3 font-sans text-[13px] font-normal text-[var(--text-nav)]">
+          <h2 className="section-heading mb-4">
             Short field notes
           </h2>
           <div className="space-y-5">
@@ -298,7 +337,7 @@ export default async function EntryPage({
       <article className="reading-column">
         <BackBar />
         <header className="mb-8">
-          <h1 className="text-[28px] leading-[1.2] font-medium tracking-[-0.02em] text-[var(--text-heading)]">
+          <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
             Things I believe
           </h1>
           <p className="mt-2 text-[16.5px] leading-[1.7] text-[var(--text-secondary)]">
@@ -307,17 +346,13 @@ export default async function EntryPage({
           </p>
         </header>
 
-        <div className="mb-8">
-          <DinoCompassVignette />
-        </div>
-
-        <div className="space-y-7">
+        <div className="space-y-8">
           {beliefsSections.map((section) => (
             <section key={section.heading}>
-              <h2 className="text-[19px] font-medium text-[var(--text-heading)]">
+              <h2 className="section-heading">
                 {section.heading}
               </h2>
-              <ul className="mt-2 list-disc space-y-1.5 pl-5 text-[16px] leading-[1.7] text-[var(--text-copy)]">
+              <ul className="square-list mt-2.5 space-y-1.5 text-[16.5px] leading-[1.7] text-[var(--text-copy)]">
                 {section.bullets.map((bullet) => (
                   <li key={bullet}>{bullet}</li>
                 ))}
@@ -335,7 +370,7 @@ export default async function EntryPage({
       <article className="reading-column">
         <BackBar />
         <header className="mb-8">
-          <h1 className="text-[28px] leading-[1.2] font-medium tracking-[-0.02em] text-[var(--text-heading)]">
+          <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
             Say hello
           </h1>
           <p className="mt-3 text-[16.5px] leading-[1.72] text-[var(--text-copy)]">
@@ -345,10 +380,10 @@ export default async function EntryPage({
           </p>
         </header>
 
-        <div className="divide-y divide-[var(--line-subtle)] border-t border-[var(--line-subtle)]">
+        <div className="space-y-3">
           <a
             href={`mailto:${profile.email}`}
-            className="flex flex-col justify-between gap-0.5 py-3 no-underline sm:flex-row sm:items-baseline"
+            className="flex flex-col justify-between gap-0.5 no-underline sm:flex-row sm:items-baseline"
           >
             <span className="soft-link text-[16px]">Email</span>
             <span className="font-sans text-[13.5px] text-[var(--text-nav)]">{profile.email}</span>
@@ -359,7 +394,7 @@ export default async function EntryPage({
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col justify-between gap-0.5 py-3 no-underline sm:flex-row sm:items-baseline"
+              className="flex flex-col justify-between gap-0.5 no-underline sm:flex-row sm:items-baseline"
             >
               <span className="soft-link text-[16px]">{link.label}</span>
               <span className="font-sans text-[13.5px] text-[var(--text-nav)]">
@@ -385,7 +420,7 @@ export default async function EntryPage({
       <BackBar />
 
       <header className="mb-7">
-        <h1 className="text-[28px] leading-[1.2] font-medium tracking-[-0.02em] text-[var(--text-heading)]">
+        <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
           {project.title}
         </h1>
         <p className="mt-1.5 font-sans text-[13px] text-[var(--text-nav)]">

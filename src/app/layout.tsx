@@ -1,16 +1,28 @@
 import type { Metadata, Viewport } from 'next';
-import { STIX_Two_Text } from 'next/font/google';
+import { IBM_Plex_Mono, La_Belle_Aurore, Newsreader } from 'next/font/google';
 import { Providers } from '@/components/providers';
 import { profile, socialLinks } from '@/content/site';
 import './globals.css';
 
-// Matches leerob.com's reading stack: Iowan Old Style first, with STIX Two Text
-// self-hosted as the cross-platform literary serif fallback for Windows & Linux.
-const stixTwoText = STIX_Two_Text({
+const newsreader = Newsreader({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
-  variable: '--font-stix-two-text',
+  variable: '--font-newsreader',
+  display: 'swap'
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-ibm-plex-mono',
+  display: 'swap'
+});
+
+const laBelleAurore = La_Belle_Aurore({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-la-belle-aurore',
   display: 'swap'
 });
 
@@ -33,7 +45,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#1b1a19' }
+    { media: '(prefers-color-scheme: dark)', color: '#000000' }
   ]
 };
 
@@ -48,7 +60,11 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={stixTwoText.variable}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${newsreader.variable} ${ibmPlexMono.variable} ${laBelleAurore.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"

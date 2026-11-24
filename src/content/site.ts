@@ -2,7 +2,7 @@ export type Locale = 'en' | 'id';
 
 export const profile = {
   name: 'M. Kaspul Anwar',
-  handle: 'anwar',
+  handle: 'anwarpage',
   domain: 'anwar.dev',
   role: {
     en: 'Machine Learning & Software',
@@ -44,7 +44,7 @@ export const bioCopy = {
     longParagraphs: [
       'I am M. Kaspul Anwar, a final-year Information Technology student in Banjarmasin (GPA 3.90 / 4.00) focused on turning machine learning experiments into reliable software people can actually use.',
       'Alongside academic research in computer vision and NLP for low-resource regional languages, I intern as a Data Analyst & Scientist at Badan Pusat Statistik (BPS) Martapura and previously served as a Google Cloud Arcade Facilitator guiding 30+ learners through Vertex AI, BigQuery ML, and MLOps.',
-      'Outside code, I care deeply about writing things down clearly, keeping systems smaller than they need to be, and building with patience. I also keep a tiny blue T-Rex as my unofficial debugging partner.'
+      'Outside code, I care deeply about writing things down clearly, keeping systems smaller than they need to be, and building with patience.'
     ],
     portraits: [
       { src: '/profile/profile.avif', alt: 'M. Kaspul Anwar portrait' },
@@ -63,7 +63,7 @@ export const bioCopy = {
     longParagraphs: [
       'Saya M. Kaspul Anwar, mahasiswa tingkat akhir Teknologi Informasi di Banjarmasin (IPK 3.90 / 4.00) yang berfokus membawa eksperimen machine learning menjadi perangkat lunak yang benar-benar dipakai.',
       'Selain riset kampus di bidang computer vision dan NLP untuk bahasa daerah, saya magang sebagai Data Analyst / Scientist di Badan Pusat Statistik (BPS) Martapura dan pernah menjadi Google Cloud Arcade Facilitator yang mendampingi 30+ peserta di jalur Vertex AI, BigQuery ML, dan MLOps.',
-      'Di luar kode, saya senang merapikan catatan belajar, menjaga sistem tetap sederhana, dan mengerjakan sesuatu dengan tenang. Saya juga punya T-Rex biru kecil sebagai partner debugging tidak resmi.'
+      'Di luar kode, saya senang merapikan catatan belajar, menjaga sistem tetap sederhana, dan mengerjakan sesuatu dengan tenang.'
     ],
     portraits: [
       { src: '/profile/profile.avif', alt: 'Potret M. Kaspul Anwar' },

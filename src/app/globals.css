@@ -6,62 +6,64 @@
   --font-serif: var(--font-reading);
   --font-sans: var(--font-ui);
   --font-mono: var(--font-code);
+  --font-script: var(--font-handwritten);
 }
 
 :root {
-  /* leerob.com-inspired typography & calm neutral paper tokens */
-  --font-reading: 'Iowan Old Style', var(--font-stix-two-text), 'Palatino Linotype', Palatino,
-    Georgia, serif;
+  --font-reading: var(--font-newsreader), 'Iowan Old Style', Georgia, serif;
   --font-ui: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-code: SFMono-Regular, 'SF Mono', ui-monospace, Menlo, Monaco, Consolas, monospace;
+  --font-code: var(--font-ibm-plex-mono), SFMono-Regular, 'SF Mono', ui-monospace, Menlo, monospace;
+  --font-handwritten: var(--font-la-belle-aurore), cursive;
 
+  /* Vercel / Geist crisp monochrome light tokens */
   --bg: #ffffff;
-  --surface-subtle: #f4f4f2;
+  --surface-subtle: #fafafa;
   --text-heading: #171717;
-  --text-copy: #282828;
-  --text-secondary: #504945;
-  --text-nav: #676767;
-  --line-subtle: rgba(40, 40, 40, 0.11);
-  --line-strong: rgba(40, 40, 40, 0.26);
-  --code-background: #f3f3f2;
-  --code-inline: #ad2111;
-  --accent: #2b6fe8;
+  --text-copy: #262626;
+  --text-secondary: #525252;
+  --text-nav: #666666;
+  --line-subtle: #eaeaea;
+  --line-strong: #d4d4d4;
+  --code-background: #fafafa;
+  --code-inline: #171717;
+  --accent: #0070f3;
 
-  /* sugar-high light syntax palette (same clean token set) */
-  --sh-class: #2e7de9;
-  --sh-identifier: #282828;
-  --sh-sign: #006a83;
-  --sh-string: #587539;
-  --sh-keyword: #9854f1;
-  --sh-comment: #848cb5;
-  --sh-jsxliterals: #2e7de9;
-  --sh-property: #387068;
-  --sh-entity: #8c6c3e;
+  /* sugar-high light syntax palette (Geist-inspired) */
+  --sh-class: #0070f3;
+  --sh-identifier: #171717;
+  --sh-sign: #666666;
+  --sh-string: #067a6e;
+  --sh-keyword: #cf222e;
+  --sh-comment: #888888;
+  --sh-jsxliterals: #0070f3;
+  --sh-property: #0550ae;
+  --sh-entity: #953800;
 }
 
 .dark {
-  --bg: #1b1a19;
-  --surface-subtle: #252422;
-  --text-heading: #f2efe9;
-  --text-copy: #ddd9d0;
-  --text-secondary: #c0bab0;
-  --text-nav: #9c978e;
-  --line-subtle: rgba(235, 230, 220, 0.12);
-  --line-strong: rgba(235, 230, 220, 0.28);
-  --code-background: #232220;
-  --code-inline: #f08872;
-  --accent: #68a2ff;
+  /* Vercel / Geist crisp monochrome dark tokens */
+  --bg: #000000;
+  --surface-subtle: #0a0a0a;
+  --text-heading: #ededed;
+  --text-copy: #d4d4d4;
+  --text-secondary: #a1a1a1;
+  --text-nav: #888888;
+  --line-subtle: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.28);
+  --code-background: #0a0a0a;
+  --code-inline: #ededed;
+  --accent: #3291ff;
 
-  /* sugar-high dark syntax palette */
-  --sh-class: #7aa2f7;
-  --sh-identifier: #ddd9d0;
-  --sh-sign: #89ddff;
-  --sh-string: #9ece6a;
-  --sh-keyword: #bb9af7;
-  --sh-comment: #565f89;
-  --sh-jsxliterals: #7aa2f7;
-  --sh-property: #73daca;
-  --sh-entity: #e0af68;
+  /* sugar-high dark syntax palette (Geist-inspired) */
+  --sh-class: #52a8ff;
+  --sh-identifier: #ededed;
+  --sh-sign: #888888;
+  --sh-string: #62c073;
+  --sh-keyword: #f75f8f;
+  --sh-comment: #666666;
+  --sh-jsxliterals: #52a8ff;
+  --sh-property: #79b8ff;
+  --sh-entity: #f5a623;
 }
 
 html {
@@ -78,22 +80,59 @@ body {
   background-color: var(--bg);
   color: var(--text-copy);
   font-family: var(--font-reading);
-  font-size: 16.5px;
-  line-height: 1.72;
+  font-size: 16px;
+  line-height: 1.68;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
 .site-shell {
-  width: min(100%, 720px);
+  width: 100%;
+  max-width: 42rem; /* 672px — rauchg.com max-w-2xl */
   margin-inline: auto;
-  padding: clamp(1.75rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 2rem) 4rem;
+  padding: clamp(1.5rem, 4vw, 2.75rem) 1.5rem 4rem;
 }
 
 .reading-column {
-  width: min(100%, 600px);
+  width: 100%;
+  max-width: 42rem;
   margin-inline: auto;
+}
+
+.site-title {
+  color: var(--text-heading);
+  font-family: var(--font-reading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.site-title-at {
+  display: inline-block;
+  position: relative;
+  top: 0.01em;
+  margin-right: 0.02em;
+  color: var(--text-nav);
+}
+
+.section-heading {
+  color: var(--text-heading);
+  font-family: var(--font-reading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+.square-list {
+  list-style: square;
+  padding-left: 1.1em;
+}
+
+.square-list > li::marker {
+  color: var(--text-nav);
 }
 
 /* Subtle leerob-style link underlines */
@@ -171,7 +210,11 @@ body {
 }
 
 .editorial-prose ul {
-  list-style-type: disc;
+  list-style-type: square;
+}
+
+.editorial-prose ul > li::marker {
+  color: var(--text-nav);
 }
 
 .editorial-prose ol {
@@ -187,6 +230,10 @@ body {
   padding-left: 1rem;
   font-style: italic;
   color: var(--text-secondary);
+}
+
+.editorial-prose hr {
+  display: none;
 }
 
 .editorial-prose img {

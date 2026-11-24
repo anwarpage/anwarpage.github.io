@@ -10,10 +10,16 @@ export function BioSwitcher() {
   const paragraphs = mode === 'short' ? copy.shortParagraphs : copy.longParagraphs;
 
   return (
-    <section aria-label="Biography" className="mt-6">
-      <div className="mb-3 flex items-center justify-between font-sans text-[13px] text-[var(--text-nav)]">
-        <span>Bio</span>
-        <div className="flex items-center gap-3" role="group" aria-label="Bio length">
+    <section aria-labelledby="story-heading" className="mt-9">
+      <div className="mb-3.5 flex items-baseline justify-between">
+        <h2 id="story-heading" className="section-heading">
+          Story
+        </h2>
+        <div
+          className="flex items-center gap-3.5 font-mono text-[12px] text-[var(--text-nav)]"
+          role="group"
+          aria-label="Story length"
+        >
           <button
             type="button"
             aria-pressed={mode === 'short'}
@@ -41,7 +47,7 @@ export function BioSwitcher() {
         </div>
       </div>
 
-      <div className="space-y-4 text-[16.5px] leading-[1.72] text-[var(--text-copy)]">
+      <div className="space-y-4 text-[16px] leading-[1.68] text-[var(--text-copy)]">
         {paragraphs.map((text, index) => (
           <p key={index} className="text-pretty">
             {text}

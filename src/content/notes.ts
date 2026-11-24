@@ -6,17 +6,6 @@ export const contentNavLinks = [
   { slug: 'contact', label: 'Say hello' }
 ] as const;
 
-export const favoritePoemQuote = {
-  lines: [
-    'Funny it seems, but by keeping its dreams,',
-    'it learned to breathe fresh air.',
-    'Long live the rose that grew from concrete',
-    'when no one else ever cared.'
-  ],
-  author: 'Tupac Shakur',
-  title: 'The Rose That Grew from Concrete'
-} as const;
-
 export interface BeliefSection {
   heading: string;
   bullets: readonly string[];

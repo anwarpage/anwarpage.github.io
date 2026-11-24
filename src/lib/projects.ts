@@ -52,6 +52,7 @@ export type ProjectSummary = {
   dateLabel: string;
   year: string;
   category: string;
+  shortType: string;
   tags: string[];
   projectType: string;
   team: ProjectMember[];
@@ -110,14 +111,18 @@ const getAllProjects = loadContent((): ProjectDetail[] =>
       const institution = asList(fm.institution);
       const rawInstitutionId = asList(fm.institution_id);
 
+      const category = asString(fm.category) || 'Software';
+      const tags = asList(fm.tags);
+
       return {
         slug: file.slug,
         title,
         date,
         dateLabel: formatMonthYear(date),
         year: formatYear(date),
-        category: asString(fm.category) || 'Software',
-        tags: asList(fm.tags),
+        category,
+        shortType: formatShortType(category, tags),
+        tags,
         projectType: asString(fm.projectType) || 'Personal',
         team: asTeam(fm.team),
         imageUrl: sanitizeSafeUrl(fm.image),
@@ -133,6 +138,18 @@ const getAllProjects = loadContent((): ProjectDetail[] =>
     })
     .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
 );
+
+export function formatShortType(category: string, tags: string[] = []): string {
+  const lower = `${category} ${tags.join(' ')}`.toLowerCase();
+  if (lower.includes('iot') || lower.includes('hardware') || lower.includes('esp32')) return 'IoT';
+  if (lower.includes('mobile') || lower.includes('android') || lower.includes('flutter')) return 'Mobile';
+  if (lower.includes('cli') || lower.includes('console')) return 'CLI';
+  if (lower.includes('game')) return 'Game';
+  if (lower.includes('machine learning') || lower.includes('computer vision') || lower.includes('ai')) return 'AI';
+  if (lower.includes('web')) return 'Web';
+  if (lower.includes('cloud')) return 'Cloud';
+  return 'App';
+}
 
 export function getPublishedProjects(): ProjectSummary[] {
   return getAllProjects().map(({ contentHtml: _omit, ...summary }) => {
