@@ -76,11 +76,11 @@ export function HomeView({
         {/* Story */}
         <BioSwitcher />
 
-        {/* Project */}
+        {/* Selected work */}
         <section aria-labelledby="project-heading" className="mt-11">
           <div className="mb-3 flex items-baseline justify-between">
             <h2 id="project-heading" className="section-heading">
-              Project
+              Selected work
             </h2>
             <Link
               href="/work"
@@ -109,7 +109,7 @@ export function HomeView({
                         {project.year}
                       </time>
                     )}
-                    <span className="grow pr-3 text-[16px] leading-[1.45] text-[var(--text-heading)]">
+                    <span className="grow pr-3 text-[15.5px] leading-[1.45] text-[var(--text-heading)]">
                       <span className="soft-link transition-colors">{name}</span>
                     </span>
                     <span
@@ -125,11 +125,19 @@ export function HomeView({
           </ul>
         </section>
 
-        {/* Writing */}
+        {/* Recent writing */}
         <section aria-labelledby="writing-heading" className="mt-11">
-          <h2 id="writing-heading" className="section-heading mb-3">
-            Writing
-          </h2>
+          <div className="mb-3 flex items-baseline justify-between">
+            <h2 id="writing-heading" className="section-heading">
+              Recent writing
+            </h2>
+            <Link
+              href="/writing"
+              className="font-body text-xs text-[var(--text-nav)] transition-colors hover:text-[var(--text-heading)]"
+            >
+              More
+            </Link>
+          </div>
           <ul>
             {posts.map((post, index) => {
               const showYear = index === 0 || posts[index - 1].year !== post.year;
@@ -151,7 +159,7 @@ export function HomeView({
                         {post.year}
                       </time>
                     )}
-                    <span className="grow pr-3 text-[16px] leading-[1.45] text-[var(--text-heading)]">
+                    <span className="grow pr-3 text-[15.5px] leading-[1.45] text-[var(--text-heading)]">
                       <span className="soft-link transition-colors">{post.title}</span>
                     </span>
                     <span

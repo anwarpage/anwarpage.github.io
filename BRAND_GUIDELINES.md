@@ -23,6 +23,17 @@ Konfigurasi font dimuat melalui `next/font/google` di `src/app/layout.tsx` dan d
 | **Body & UI** | **Atkinson Hyperlegible Next** | `400, 500, 600, 700` (normal & italic) | `--font-body` / `font-body` | Teks paragraf utama (`body`), artikel markdown, navigasi, metadata, sub-heading (`h3`), dan tabel |
 | **Accent / Script** | **La Belle Aurore** | `400` (normal) | `--font-accent` / `font-script` | Kutipan (`blockquote`), nama di hero, tagline footer, dan highlight personal yang unik |
 
+### Type Scale (Skala Ukuran)
+
+| Elemen | Ukuran | Weight | Line Height / Tracking |
+| :--- | :--- | :--- | :--- |
+| **Page Heading (`h1`)** | `34px` (mobile) / `38px` (desktop) | `700` | `1.15` / `-0.03em` |
+| **Site Title (`.site-title`)** | `28px`–`30px` (`clamp`) | `700` | `1.15` / `-0.03em` |
+| **Section Heading (`h2`, `.section-heading`)** | `22px` (`1.375rem`) | `600` | `1.3` / `-0.025em` |
+| **Sub-heading (`h3`)** | `16.5px` | `600` | `1.4` |
+| **Body / Isi Konten** | `15.5px` | `400` | `1.7`–`1.74` |
+| **Metadata / Nav** | `12px`–`13.5px` | `400`–`500` | `1.5` |
+
 ### Fallback & Code Stack
 
 - **Heading fallback:** `ui-sans-serif, system-ui, sans-serif`
