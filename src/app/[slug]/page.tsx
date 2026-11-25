@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { MarkdownArticle } from '@/components/markdown-article';
-import { ThemeToggle } from '@/components/theme-toggle';
 import { beliefsSections, contentNavLinks } from '@/content/notes';
 import {
   bioCopy,
@@ -65,17 +64,40 @@ export async function generateMetadata({
   return { title: 'Not Found' };
 }
 
-function BackBar() {
+function BackBar({ section }: { section?: string }) {
   return (
-    <div className="mb-8 flex items-center justify-between">
+    <nav
+      aria-label="Page navigation"
+      className="mb-8 flex items-center justify-between"
+    >
       <Link
         href="/"
-        className="font-sans text-[13px] text-[var(--text-nav)] no-underline transition-colors hover:text-[var(--text-heading)]"
+        className="group inline-flex items-center gap-1.5 rounded-full border border-[var(--line-subtle)] bg-[var(--bg)] px-3 py-1.5 font-body text-[13px] font-medium text-[var(--text-secondary)] no-underline transition-all duration-200 hover:border-[var(--line-strong)] hover:bg-[var(--surface-subtle)] hover:text-[var(--text-heading)]"
       >
-        ← @{profile.handle}
+        <svg
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.9"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+          className="transition-transform duration-200 group-hover:-translate-x-0.5"
+        >
+          <path d="M19 12H5" />
+          <path d="m12 19-7-7 7-7" />
+        </svg>
+        <span>Home</span>
       </Link>
-      <ThemeToggle />
-    </div>
+
+      {section && (
+        <span className="font-body text-[12px] tracking-[0.01em] text-[var(--text-nav)]">
+          {section}
+        </span>
+      )}
+    </nav>
   );
 }
 
@@ -91,20 +113,13 @@ export default async function EntryPage({
     const bio = bioCopy.en;
     return (
       <article className="reading-column">
-        <BackBar />
+        <BackBar section="About" />
         <header className="mb-8">
-          <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
+          <h1 className="font-heading text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
             Who I am
           </h1>
-          <p className="mt-1.5 font-sans text-[13px] text-[var(--text-nav)]">
-            {profile.location} · {profile.timezone} ·{' '}
-            <a
-              href={profile.resumeHref}
-              download="resume-m-kaspul-anwar.pdf"
-              className="soft-link"
-            >
-              Resume PDF ↓
-            </a>
+          <p className="mt-1.5 font-body text-[13px] text-[var(--text-nav)]">
+            {profile.timezone}
           </p>
         </header>
 
@@ -151,9 +166,9 @@ export default async function EntryPage({
                 <h3 className="text-[17.5px] font-semibold text-[var(--text-heading)]">
                   {item.school}
                 </h3>
-                <span className="font-sans text-[13px] text-[var(--text-nav)]">{item.period}</span>
+                <span className="font-body text-[13px] text-[var(--text-nav)]">{item.period}</span>
               </div>
-              <p className="font-sans text-[13.5px] text-[var(--text-nav)]">
+              <p className="font-body text-[13.5px] text-[var(--text-nav)]">
                 {item.degree} · {item.meta}
               </p>
               {item.notes && (
@@ -200,23 +215,14 @@ export default async function EntryPage({
     const honorList = honors.en;
     return (
       <article className="reading-column">
-        <BackBar />
+        <BackBar section="Contributions" />
         <header className="mb-8">
-          <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
+          <h1 className="font-heading text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
             Where I&apos;ve contributed
           </h1>
           <p className="mt-2 text-[16.5px] leading-[1.7] text-[var(--text-secondary)]">
             Work experience, organizations, and honors — small ways I refuse to sit still and try
             to leave things a little brighter.
-          </p>
-          <p className="mt-2 font-sans text-[13px] text-[var(--text-nav)]">
-            <a
-              href={profile.resumeHref}
-              download="resume-m-kaspul-anwar.pdf"
-              className="soft-link"
-            >
-              Resume PDF ↓
-            </a>
           </p>
         </header>
 
@@ -229,7 +235,7 @@ export default async function EntryPage({
             </p>
           </blockquote>
 
-          <figcaption className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 font-mono text-[11.5px] text-[var(--text-nav)]">
+          <figcaption className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 font-body text-[11.5px] text-[var(--text-nav)]">
             <span>— Dylan Thomas</span>
             <span className="text-[var(--text-nav)]/70">Do Not Go Gentle into That Good Night</span>
           </figcaption>
@@ -243,9 +249,9 @@ export default async function EntryPage({
             <div key={`${item.org}-${item.period}`}>
               <div className="flex flex-col justify-between gap-0.5 sm:flex-row sm:items-baseline">
                 <h3 className="text-[17.5px] font-semibold text-[var(--text-heading)]">{item.role}</h3>
-                <span className="font-sans text-[13px] text-[var(--text-nav)]">{item.period}</span>
+                <span className="font-body text-[13px] text-[var(--text-nav)]">{item.period}</span>
               </div>
-              <p className="font-sans text-[13.5px] text-[var(--text-nav)]">
+              <p className="font-body text-[13.5px] text-[var(--text-nav)]">
                 {item.org} · {item.location}
               </p>
               <ul className="square-list mt-2 space-y-1 text-[16px] leading-[1.68] text-[var(--text-copy)]">
@@ -266,9 +272,9 @@ export default async function EntryPage({
               <div key={`${item.org}-${item.period}`}>
                 <div className="flex flex-col justify-between gap-0.5 sm:flex-row sm:items-baseline">
                   <h3 className="text-[17.5px] font-semibold text-[var(--text-heading)]">{item.role}</h3>
-                  <span className="font-sans text-[13px] text-[var(--text-nav)]">{item.period}</span>
+                  <span className="font-body text-[13px] text-[var(--text-nav)]">{item.period}</span>
                 </div>
-                <p className="font-sans text-[13.5px] text-[var(--text-nav)]">
+                <p className="font-body text-[13.5px] text-[var(--text-nav)]">
                   {item.location ? `${item.org} · ${item.location}` : item.org}
                 </p>
                 {item.points.length > 0 && (
@@ -292,9 +298,9 @@ export default async function EntryPage({
               <div key={`${item.title}-${item.year}`}>
                 <div className="flex flex-col justify-between gap-0.5 sm:flex-row sm:items-baseline">
                   <h3 className="text-[17.5px] font-semibold text-[var(--text-heading)]">{item.title}</h3>
-                  <span className="font-sans text-[13px] text-[var(--text-nav)]">{item.year}</span>
+                  <span className="font-body text-[13px] text-[var(--text-nav)]">{item.year}</span>
                 </div>
-                <p className="font-sans text-[13.5px] text-[var(--text-nav)]">{item.issuer}</p>
+                <p className="font-body text-[13.5px] text-[var(--text-nav)]">{item.issuer}</p>
                 {item.note && (
                   <p className="mt-1.5 text-[16px] leading-[1.68] text-[var(--text-copy)]">
                     {item.note}
@@ -313,9 +319,9 @@ export default async function EntryPage({
     const projects = getPublishedProjects();
     return (
       <article className="reading-column">
-        <BackBar />
+        <BackBar section="Work" />
         <header className="mb-8">
-          <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
+          <h1 className="font-heading text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
             What I&apos;ve built
           </h1>
           <p className="mt-2 text-[16.5px] leading-[1.7] text-[var(--text-secondary)]">
@@ -337,7 +343,7 @@ export default async function EntryPage({
                   {showYear && (
                     <time
                       dateTime={project.date}
-                      className="w-10 md:w-14 inline-block self-start shrink-0 font-sans text-xs tabular-nums text-[var(--text-nav)] mt-1.5"
+                      className="w-10 md:w-14 inline-block self-start shrink-0 font-body text-xs tabular-nums text-[var(--text-nav)] mt-1.5"
                     >
                       {project.year}
                     </time>
@@ -350,7 +356,7 @@ export default async function EntryPage({
                       {project.description}
                     </p>
                   </div>
-                  <span className="shrink-0 self-start font-sans text-xs text-[var(--text-nav)] mt-1.5">
+                  <span className="shrink-0 self-start font-body text-xs text-[var(--text-nav)] mt-1.5">
                     {project.shortType}
                   </span>
                 </Link>
@@ -367,9 +373,9 @@ export default async function EntryPage({
     const posts = getPublishedBlogPosts();
     return (
       <article className="reading-column">
-        <BackBar />
+        <BackBar section="Writing" />
         <header className="mb-8">
-          <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
+          <h1 className="font-heading text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
             What I&apos;ve written
           </h1>
           <p className="mt-2 text-[16.5px] leading-[1.7] text-[var(--text-secondary)]">
@@ -397,7 +403,7 @@ export default async function EntryPage({
                     {showYear && (
                       <time
                         dateTime={post.date}
-                        className="w-10 md:w-14 inline-block self-start shrink-0 font-sans text-xs tabular-nums text-[var(--text-nav)] mt-1.5"
+                        className="w-10 md:w-14 inline-block self-start shrink-0 font-body text-xs tabular-nums text-[var(--text-nav)] mt-1.5"
                       >
                         {post.year}
                       </time>
@@ -410,7 +416,7 @@ export default async function EntryPage({
                         {post.description}
                       </p>
                     </div>
-                    <span className="shrink-0 self-start font-sans text-xs text-[var(--text-nav)] mt-1.5">
+                    <span className="shrink-0 self-start font-body text-xs text-[var(--text-nav)] mt-1.5">
                       {post.shortType} ↗
                     </span>
                   </a>
@@ -443,9 +449,9 @@ export default async function EntryPage({
   if (slug === 'beliefs') {
     return (
       <article className="reading-column">
-        <BackBar />
+        <BackBar section="Beliefs" />
         <header className="mb-8">
-          <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
+          <h1 className="font-heading text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
             What I believe
           </h1>
           <p className="mt-2 text-[16.5px] leading-[1.7] text-[var(--text-secondary)]">
@@ -463,7 +469,7 @@ export default async function EntryPage({
             </p>
           </blockquote>
 
-          <figcaption className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 font-mono text-[11.5px] text-[var(--text-nav)]">
+          <figcaption className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 font-body text-[11.5px] text-[var(--text-nav)]">
             <span>— Tupac Shakur</span>
             <span className="text-[var(--text-nav)]/70">The Rose That Grew from Concrete</span>
           </figcaption>
@@ -489,11 +495,16 @@ export default async function EntryPage({
 
   /* ── 5. How to reach me (/contact) ── */
   if (slug === 'contact') {
+    const contactOrder = ['GitHub', 'LinkedIn', 'Medium', 'Instagram'] as const;
+    const contactSocialLinks = contactOrder
+      .map((label) => socialLinks.find((item) => item.label === label))
+      .filter((item): item is (typeof socialLinks)[number] => Boolean(item));
+
     return (
       <article className="reading-column">
-        <BackBar />
+        <BackBar section="Contact" />
         <header className="mb-8">
-          <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
+          <h1 className="font-heading text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
             How to reach me
           </h1>
           <p className="mt-3 text-[16.5px] leading-[1.72] text-[var(--text-copy)]">
@@ -509,9 +520,9 @@ export default async function EntryPage({
             className="flex flex-col justify-between gap-0.5 no-underline sm:flex-row sm:items-baseline"
           >
             <span className="soft-link text-[16px]">Email</span>
-            <span className="font-sans text-[13.5px] text-[var(--text-nav)]">{profile.email}</span>
+            <span className="font-body text-[13.5px] text-[var(--text-nav)]">{profile.email}</span>
           </a>
-          {socialLinks.map((link) => (
+          {contactSocialLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
@@ -520,15 +531,15 @@ export default async function EntryPage({
               className="flex flex-col justify-between gap-0.5 no-underline sm:flex-row sm:items-baseline"
             >
               <span className="soft-link text-[16px]">{link.label}</span>
-              <span className="font-sans text-[13.5px] text-[var(--text-nav)]">
+              <span className="font-body text-[13.5px] text-[var(--text-nav)]">
                 {link.handle} ↗
               </span>
             </a>
           ))}
         </div>
 
-        <p className="mt-6 font-sans text-[13px] text-[var(--text-nav)]">
-          Based in {profile.location} ({profile.timezone}).
+        <p className="mt-6 font-body text-[13px] text-[var(--text-nav)]">
+          Timezone: {profile.timezone}
         </p>
       </article>
     );
@@ -540,13 +551,13 @@ export default async function EntryPage({
 
   return (
     <article className="reading-column">
-      <BackBar />
+      <BackBar section={`Work / ${project.shortType}`} />
 
       <header className="mb-7">
-        <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
+        <h1 className="font-heading text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
           {project.title}
         </h1>
-        <p className="mt-1.5 font-sans text-[13px] text-[var(--text-nav)]">
+        <p className="mt-1.5 font-body text-[13px] text-[var(--text-nav)]">
           <time dateTime={project.date}>{project.dateLabel}</time> · {project.category}
           {project.liveUrl && (
             <>

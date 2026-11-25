@@ -47,7 +47,7 @@ export function HomeView({
             <h2 id="content-heading" className="section-heading mb-1.5">
               Contents
             </h2>
-            <ul className="square-list grid grid-cols-2 gap-x-4 gap-y-1 sm:grid-cols-3">
+            <ul className="square-list grid grid-cols-1 gap-x-6 gap-y-1 min-[460px]:grid-cols-2 sm:grid-cols-3 sm:gap-x-5">
               {contentNavLinks.map((item) => (
                 <li key={item.slug} className="pl-0.5 leading-[1.45]">
                   <Link href={`/${item.slug}`} className="soft-link text-[15.5px]">
@@ -84,7 +84,7 @@ export function HomeView({
             </h2>
             <Link
               href="/work"
-              className="font-mono text-xs text-[var(--text-nav)] transition-colors hover:text-[var(--text-heading)]"
+              className="font-body text-xs text-[var(--text-nav)] transition-colors hover:text-[var(--text-heading)]"
             >
               All {projects.length}
             </Link>
@@ -104,7 +104,7 @@ export function HomeView({
                     {showYear && (
                       <time
                         dateTime={project.date}
-                        className="mt-1 inline-block w-10 shrink-0 self-start font-mono text-xs tabular-nums text-[var(--text-nav)] md:w-14"
+                        className="mt-1 inline-block w-10 shrink-0 self-start font-body text-xs tabular-nums text-[var(--text-nav)] md:w-14"
                       >
                         {project.year}
                       </time>
@@ -114,7 +114,7 @@ export function HomeView({
                     </span>
                     <span
                       aria-hidden="true"
-                      className="mt-1 shrink-0 self-start font-mono text-xs text-[var(--text-nav)] transition-colors group-hover:text-[var(--text-heading)]"
+                      className="mt-1 shrink-0 self-start font-body text-xs text-[var(--text-nav)] transition-colors group-hover:text-[var(--text-heading)]"
                     >
                       ↗
                     </span>
@@ -146,7 +146,7 @@ export function HomeView({
                     {showYear && (
                       <time
                         dateTime={post.date}
-                        className="mt-1 inline-block w-10 shrink-0 self-start font-mono text-xs tabular-nums text-[var(--text-nav)] md:w-14"
+                        className="mt-1 inline-block w-10 shrink-0 self-start font-body text-xs tabular-nums text-[var(--text-nav)] md:w-14"
                       >
                         {post.year}
                       </time>
@@ -156,7 +156,7 @@ export function HomeView({
                     </span>
                     <span
                       aria-hidden="true"
-                      className="mt-1 shrink-0 self-start font-mono text-xs text-[var(--text-nav)] transition-colors group-hover:text-[var(--text-heading)]"
+                      className="mt-1 shrink-0 self-start font-body text-xs text-[var(--text-nav)] transition-colors group-hover:text-[var(--text-heading)]"
                     >
                       ↗
                     </span>

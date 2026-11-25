@@ -16,7 +16,7 @@ export function BioSwitcher() {
           Story
         </h2>
         <div
-          className="flex items-center gap-3.5 font-mono text-[12px] text-[var(--text-nav)]"
+          className="flex items-center gap-3.5 font-body text-[12px] text-[var(--text-nav)]"
           role="group"
           aria-label="Story length"
         >

@@ -1,22 +1,27 @@
 import type { Metadata, Viewport } from 'next';
-import { IBM_Plex_Mono, La_Belle_Aurore, Newsreader } from 'next/font/google';
+import {
+  Atkinson_Hyperlegible_Next,
+  La_Belle_Aurore,
+  Schibsted_Grotesk
+} from 'next/font/google';
 import { Providers } from '@/components/providers';
 import { SiteFooter } from '@/components/site-footer';
 import { profile, socialLinks } from '@/content/site';
 import './globals.css';
 
-const newsreader = Newsreader({
+const schibstedGrotesk = Schibsted_Grotesk({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: ['500', '600', '700'],
   style: ['normal', 'italic'],
-  variable: '--font-newsreader',
+  variable: '--font-schibsted-grotesk',
   display: 'swap'
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
+const atkinsonHyperlegibleNext = Atkinson_Hyperlegible_Next({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-ibm-plex-mono',
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-atkinson-hyperlegible-next',
   display: 'swap'
 });
 
@@ -33,7 +38,7 @@ export const metadata: Metadata = {
     template: `%s — ${profile.name}`
   },
   description:
-    'M. Kaspul Anwar — Engineer and writer in Banjarmasin working across machine learning, data, and software.',
+    'M. Kaspul Anwar — Engineer and writer working across machine learning, data, and software.',
   icons: {
     icon: [
       { url: '/favicon/favicon.ico' },
@@ -64,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${newsreader.variable} ${ibmPlexMono.variable} ${laBelleAurore.variable}`}
+      className={`${schibstedGrotesk.variable} ${atkinsonHyperlegibleNext.variable} ${laBelleAurore.variable}`}
     >
       <head>
         <script
