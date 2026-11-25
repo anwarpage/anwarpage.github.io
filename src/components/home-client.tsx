@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { BioSwitcher } from '@/components/bio-switcher';
-import { LighthousePainting } from '@/components/lighthouse-painting';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { contentNavLinks } from '@/content/notes';
 import { profile } from '@/content/site';
@@ -39,8 +38,17 @@ export function HomeView({
           aria-labelledby="content-heading"
           className="overflow-hidden rounded-2xl border border-[var(--line-subtle)] bg-[var(--bg)]"
         >
-          <div className="border-b border-[var(--line-subtle)]">
-            <LighthousePainting />
+          <div className="border-b border-[var(--line-subtle)] bg-[var(--surface-subtle)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/hero-gouache-banner.jpg"
+              alt="Gouache panorama of human technological progress across four phases: prehistoric first fire, ancient pyramids, steam locomotive, and a SpaceX rocket launch"
+              width={1376}
+              height={469}
+              fetchPriority="high"
+              decoding="async"
+              className="block aspect-[1376/469] w-full object-cover dark:brightness-[0.94] dark:contrast-[1.03]"
+            />
           </div>
 
           <div className="px-5 py-3.5">
