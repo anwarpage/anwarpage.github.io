@@ -43,14 +43,14 @@ export function HomeView({
             <LighthousePainting />
           </div>
 
-          <div className="px-5 py-4">
-            <h2 id="content-heading" className="section-heading mb-2.5">
-              Content
+          <div className="px-5 py-3.5">
+            <h2 id="content-heading" className="section-heading mb-1.5">
+              Contents
             </h2>
-            <ul className="square-list grid grid-flow-col grid-cols-2 grid-rows-3 gap-x-6 gap-y-1.5 sm:grid-cols-[repeat(3,max-content)] sm:grid-rows-2 sm:justify-between">
+            <ul className="square-list grid grid-cols-2 gap-x-4 gap-y-1 sm:grid-cols-3">
               {contentNavLinks.map((item) => (
-                <li key={item.slug} className="pl-0.5">
-                  <Link href={`/${item.slug}`} className="soft-link text-[16px]">
+                <li key={item.slug} className="pl-0.5 leading-[1.45]">
+                  <Link href={`/${item.slug}`} className="soft-link text-[15.5px]">
                     {item.label}
                   </Link>
                 </li>

@@ -1,9 +1,10 @@
 export const contentNavLinks = [
   { slug: 'about', label: 'Who I am' },
-  { slug: 'beliefs', label: 'What I believe' },
   { slug: 'work', label: "What I've built" },
+  { slug: 'contributions', label: "Where I've contributed" },
+  { slug: 'beliefs', label: 'What I believe' },
   { slug: 'writing', label: "What I've written" },
-  { slug: 'contact', label: 'Say hello' }
+  { slug: 'contact', label: 'How to reach me' }
 ] as const;
 
 export interface BeliefSection {

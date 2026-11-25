@@ -161,6 +161,31 @@ export const experiences = {
   ]
 } as const;
 
+export interface OrganizationEntry {
+  period: string;
+  role: string;
+  org: string;
+  location?: string;
+  points: readonly string[];
+}
+
+export interface HonorEntry {
+  year: string;
+  title: string;
+  issuer: string;
+  note?: string;
+}
+
+export const organizations: Record<Locale, readonly OrganizationEntry[]> = {
+  en: [],
+  id: []
+};
+
+export const honors: Record<Locale, readonly HonorEntry[]> = {
+  en: [],
+  id: []
+};
+
 export const education = {
   en: [
     {

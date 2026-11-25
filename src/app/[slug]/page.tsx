@@ -10,6 +10,8 @@ import {
   education,
   experiences,
   expertiseAreas,
+  honors,
+  organizations,
   profile,
   socialLinks,
   technicalNotes,
@@ -34,7 +36,13 @@ export async function generateMetadata({
   const { slug } = await params;
 
   if (slug === 'about') {
-    return { title: 'Who I am', description: `Background and experience of ${profile.name}.` };
+    return { title: 'Who I am', description: `Background, education, and focus of ${profile.name}.` };
+  }
+  if (slug === 'contributions') {
+    return {
+      title: "Where I've contributed",
+      description: `Work experience, organizations, and honors of ${profile.name}.`
+    };
   }
   if (slug === 'work') {
     return { title: "What I've built", description: `Selected projects built by ${profile.name}.` };
@@ -46,7 +54,7 @@ export async function generateMetadata({
     return { title: 'What I believe', description: `Values and principles ${profile.name} lives by.` };
   }
   if (slug === 'contact') {
-    return { title: 'Say hello', description: `Get in touch with ${profile.name}.` };
+    return { title: 'How to reach me', description: `Get in touch with ${profile.name}.` };
   }
 
   const project = getProjectBySlug(slug);
@@ -125,27 +133,13 @@ export default async function EntryPage({
           ))}
         </div>
 
-        <section className="mt-10 space-y-5">
-          <h2 className="section-heading">
-            Experience
-          </h2>
-          {experiences.en.map((item) => (
-            <div key={`${item.org}-${item.period}`}>
-              <div className="flex flex-col justify-between gap-0.5 sm:flex-row sm:items-baseline">
-                <h3 className="text-[17.5px] font-semibold text-[var(--text-heading)]">{item.role}</h3>
-                <span className="font-sans text-[13px] text-[var(--text-nav)]">{item.period}</span>
-              </div>
-              <p className="font-sans text-[13.5px] text-[var(--text-nav)]">
-                {item.org} · {item.location}
-              </p>
-              <ul className="square-list mt-2 space-y-1 text-[16px] leading-[1.68] text-[var(--text-copy)]">
-                {item.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </section>
+        <p className="mt-6 text-[15.5px] leading-[1.7] text-[var(--text-secondary)]">
+          For work experience, organizations, and honors, see{' '}
+          <Link href="/contributions" className="soft-link text-[var(--text-heading)]">
+            Where I&apos;ve contributed
+          </Link>
+          .
+        </p>
 
         <section className="mt-10 space-y-5">
           <h2 className="section-heading">
@@ -196,6 +190,120 @@ export default async function EntryPage({
             </p>
           ))}
         </section>
+      </article>
+    );
+  }
+
+  /* ── 1b. Where I've contributed (/contributions) ── */
+  if (slug === 'contributions') {
+    const orgList = organizations.en;
+    const honorList = honors.en;
+    return (
+      <article className="reading-column">
+        <BackBar />
+        <header className="mb-8">
+          <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
+            Where I&apos;ve contributed
+          </h1>
+          <p className="mt-2 text-[16.5px] leading-[1.7] text-[var(--text-secondary)]">
+            Work experience, organizations, and honors — small ways I refuse to sit still and try
+            to leave things a little brighter.
+          </p>
+          <p className="mt-2 font-sans text-[13px] text-[var(--text-nav)]">
+            <a
+              href={profile.resumeHref}
+              download="resume-m-kaspul-anwar.pdf"
+              className="soft-link"
+            >
+              Resume PDF ↓
+            </a>
+          </p>
+        </header>
+
+        <figure className="mb-11 rounded-2xl border border-[var(--line-subtle)] bg-[var(--surface-subtle)] px-6 py-7 sm:px-8 sm:py-8">
+          <blockquote className="font-script text-[25px] leading-[1.48] text-[var(--text-heading)] sm:text-[29px]">
+            <p className="text-pretty">
+              &ldquo;Do not go gentle into that good night.
+              <br className="hidden sm:inline" />{' '}
+              Rage, rage against the dying of the light.&rdquo;
+            </p>
+          </blockquote>
+
+          <figcaption className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 font-mono text-[11.5px] text-[var(--text-nav)]">
+            <span>— Dylan Thomas</span>
+            <span className="text-[var(--text-nav)]/70">Do Not Go Gentle into That Good Night</span>
+          </figcaption>
+        </figure>
+
+        <section className="space-y-5">
+          <h2 className="section-heading">
+            Experience
+          </h2>
+          {experiences.en.map((item) => (
+            <div key={`${item.org}-${item.period}`}>
+              <div className="flex flex-col justify-between gap-0.5 sm:flex-row sm:items-baseline">
+                <h3 className="text-[17.5px] font-semibold text-[var(--text-heading)]">{item.role}</h3>
+                <span className="font-sans text-[13px] text-[var(--text-nav)]">{item.period}</span>
+              </div>
+              <p className="font-sans text-[13.5px] text-[var(--text-nav)]">
+                {item.org} · {item.location}
+              </p>
+              <ul className="square-list mt-2 space-y-1 text-[16px] leading-[1.68] text-[var(--text-copy)]">
+                {item.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+
+        {orgList.length > 0 && (
+          <section className="mt-10 space-y-5">
+            <h2 className="section-heading">
+              Organizations &amp; Community
+            </h2>
+            {orgList.map((item) => (
+              <div key={`${item.org}-${item.period}`}>
+                <div className="flex flex-col justify-between gap-0.5 sm:flex-row sm:items-baseline">
+                  <h3 className="text-[17.5px] font-semibold text-[var(--text-heading)]">{item.role}</h3>
+                  <span className="font-sans text-[13px] text-[var(--text-nav)]">{item.period}</span>
+                </div>
+                <p className="font-sans text-[13.5px] text-[var(--text-nav)]">
+                  {item.location ? `${item.org} · ${item.location}` : item.org}
+                </p>
+                {item.points.length > 0 && (
+                  <ul className="square-list mt-2 space-y-1 text-[16px] leading-[1.68] text-[var(--text-copy)]">
+                    {item.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </section>
+        )}
+
+        {honorList.length > 0 && (
+          <section className="mt-10 space-y-4">
+            <h2 className="section-heading">
+              Honors &amp; Awards
+            </h2>
+            {honorList.map((item) => (
+              <div key={`${item.title}-${item.year}`}>
+                <div className="flex flex-col justify-between gap-0.5 sm:flex-row sm:items-baseline">
+                  <h3 className="text-[17.5px] font-semibold text-[var(--text-heading)]">{item.title}</h3>
+                  <span className="font-sans text-[13px] text-[var(--text-nav)]">{item.year}</span>
+                </div>
+                <p className="font-sans text-[13.5px] text-[var(--text-nav)]">{item.issuer}</p>
+                {item.note && (
+                  <p className="mt-1.5 text-[16px] leading-[1.68] text-[var(--text-copy)]">
+                    {item.note}
+                  </p>
+                )}
+              </div>
+            ))}
+          </section>
+        )}
       </article>
     );
   }
@@ -379,14 +487,14 @@ export default async function EntryPage({
     );
   }
 
-  /* ── 5. Say hello (/contact) ── */
+  /* ── 5. How to reach me (/contact) ── */
   if (slug === 'contact') {
     return (
       <article className="reading-column">
         <BackBar />
         <header className="mb-8">
           <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
-            Say hello
+            How to reach me
           </h1>
           <p className="mt-3 text-[16.5px] leading-[1.72] text-[var(--text-copy)]">
             Have a project in mind, a question about my work, or an opportunity in machine learning
