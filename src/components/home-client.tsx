@@ -5,7 +5,7 @@ import { BioSwitcher } from '@/components/bio-switcher';
 import { LighthousePainting } from '@/components/lighthouse-painting';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { contentNavLinks } from '@/content/notes';
-import { profile, socialLinks } from '@/content/site';
+import { profile } from '@/content/site';
 import type { BlogEntry } from '@/lib/blog';
 import type { ProjectSummary } from '@/lib/projects';
 
@@ -47,7 +47,7 @@ export function HomeView({
             <h2 id="content-heading" className="section-heading mb-2.5">
               Content
             </h2>
-            <ul className="square-list grid grid-cols-2 gap-x-6 gap-y-1.5 sm:grid-cols-[repeat(3,max-content)] sm:justify-between">
+            <ul className="square-list grid grid-flow-col grid-cols-2 grid-rows-3 gap-x-6 gap-y-1.5 sm:grid-cols-[repeat(3,max-content)] sm:grid-rows-2 sm:justify-between">
               {contentNavLinks.map((item) => (
                 <li key={item.slug} className="pl-0.5">
                   <Link href={`/${item.slug}`} className="soft-link text-[16px]">
@@ -55,15 +55,6 @@ export function HomeView({
                   </Link>
                 </li>
               ))}
-              <li className="pl-0.5">
-                <a
-                  href={profile.resumeHref}
-                  download="resume-m-kaspul-anwar.pdf"
-                  className="soft-link text-[16px]"
-                >
-                  Read my resume
-                </a>
-              </li>
             </ul>
           </div>
         </section>
@@ -175,34 +166,6 @@ export function HomeView({
             })}
           </ul>
         </section>
-
-        {/* Quiet minimal links at the end */}
-        <footer className="mt-12 flex flex-wrap items-center gap-x-4 gap-y-1.5 font-mono text-[12px] text-[var(--text-nav)]">
-          <a
-            href={`mailto:${profile.email}`}
-            className="transition-colors hover:text-[var(--text-heading)]"
-          >
-            Email
-          </a>
-          {socialLinks.slice(0, 3).map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-[var(--text-heading)]"
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href={profile.resumeHref}
-            download="resume-m-kaspul-anwar.pdf"
-            className="transition-colors hover:text-[var(--text-heading)]"
-          >
-            Resume
-          </a>
-        </footer>
       </div>
     </article>
   );

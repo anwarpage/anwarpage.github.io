@@ -34,16 +34,16 @@ export async function generateMetadata({
   const { slug } = await params;
 
   if (slug === 'about') {
-    return { title: 'Know me better', description: `Background and experience of ${profile.name}.` };
+    return { title: 'Who I am', description: `Background and experience of ${profile.name}.` };
   }
   if (slug === 'work') {
-    return { title: 'See my work', description: `Selected projects built by ${profile.name}.` };
+    return { title: "What I've built", description: `Selected projects built by ${profile.name}.` };
   }
   if (slug === 'writing') {
-    return { title: 'Things I wrote', description: `Essays and technical notes by ${profile.name}.` };
+    return { title: "What I've written", description: `Essays and technical notes by ${profile.name}.` };
   }
   if (slug === 'beliefs') {
-    return { title: 'Things I believe', description: `Values and principles ${profile.name} lives by.` };
+    return { title: 'What I believe', description: `Values and principles ${profile.name} lives by.` };
   }
   if (slug === 'contact') {
     return { title: 'Say hello', description: `Get in touch with ${profile.name}.` };
@@ -86,7 +86,7 @@ export default async function EntryPage({
         <BackBar />
         <header className="mb-8">
           <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
-            Know me better
+            Who I am
           </h1>
           <p className="mt-1.5 font-sans text-[13px] text-[var(--text-nav)]">
             {profile.location} · {profile.timezone} ·{' '}
@@ -208,7 +208,7 @@ export default async function EntryPage({
         <BackBar />
         <header className="mb-8">
           <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
-            See my work
+            What I&apos;ve built
           </h1>
           <p className="mt-2 text-[16.5px] leading-[1.7] text-[var(--text-secondary)]">
             Applications, computer vision models, civic portals, and experiments I have built.
@@ -262,7 +262,7 @@ export default async function EntryPage({
         <BackBar />
         <header className="mb-8">
           <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
-            Things I wrote
+            What I&apos;ve written
           </h1>
           <p className="mt-2 text-[16.5px] leading-[1.7] text-[var(--text-secondary)]">
             Longer stories published on Medium and shorter field notes from building things.
@@ -338,13 +338,28 @@ export default async function EntryPage({
         <BackBar />
         <header className="mb-8">
           <h1 className="text-[30px] leading-[1.2] font-semibold tracking-[-0.02em] text-[var(--text-heading)]">
-            Things I believe
+            What I believe
           </h1>
           <p className="mt-2 text-[16.5px] leading-[1.7] text-[var(--text-secondary)]">
             Values and principles I try to live and work by. Updated whenever I learn something
             worth keeping.
           </p>
         </header>
+
+        <figure className="mb-11 rounded-2xl border border-[var(--line-subtle)] bg-[var(--surface-subtle)] px-6 py-7 sm:px-8 sm:py-8">
+          <blockquote className="font-script text-[25px] leading-[1.48] text-[var(--text-heading)] sm:text-[29px]">
+            <p className="text-pretty">
+              &ldquo;Long live the rose that grew from concrete
+              <br className="hidden sm:inline" />{' '}
+              when no one else ever cared.&rdquo;
+            </p>
+          </blockquote>
+
+          <figcaption className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 font-mono text-[11.5px] text-[var(--text-nav)]">
+            <span>— Tupac Shakur</span>
+            <span className="text-[var(--text-nav)]/70">The Rose That Grew from Concrete</span>
+          </figcaption>
+        </figure>
 
         <div className="space-y-8">
           {beliefsSections.map((section) => (

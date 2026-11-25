@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { IBM_Plex_Mono, La_Belle_Aurore, Newsreader } from 'next/font/google';
 import { Providers } from '@/components/providers';
+import { SiteFooter } from '@/components/site-footer';
 import { profile, socialLinks } from '@/content/site';
 import './globals.css';
 
@@ -73,7 +74,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="antialiased">
         <Providers>
-          <main className="site-shell">{children}</main>
+          <div className="site-shell">
+            <main>{children}</main>
+            <SiteFooter />
+          </div>
         </Providers>
       </body>
     </html>

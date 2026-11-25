@@ -1,8 +1,8 @@
 export const contentNavLinks = [
-  { slug: 'about', label: 'Know me better' },
-  { slug: 'work', label: 'See my work' },
-  { slug: 'writing', label: 'Things I wrote' },
-  { slug: 'beliefs', label: 'Things I believe' },
+  { slug: 'about', label: 'Who I am' },
+  { slug: 'beliefs', label: 'What I believe' },
+  { slug: 'work', label: "What I've built" },
+  { slug: 'writing', label: "What I've written" },
   { slug: 'contact', label: 'Say hello' }
 ] as const;
 
