@@ -1,12 +1,11 @@
 ---
 title: Suara - Public Aspiration & Policy Voting Platform
 description: A native Android e-democracy app where citizens register with their NIK, read public policies, cast one vote per policy, discuss it, and send aspirations to government agencies.
-description_id: Aplikasi Android e-demokrasi tempat warga mendaftar dengan NIK, membaca kebijakan publik, memberikan satu suara per kebijakan, berdiskusi, dan mengirim aspirasi ke instansi pemerintah.
 date: 2025-12-12
 category: Mobile
 tags: Civic Tech, E-Democracy, Public Policy, Android
 projectType: Personal
-image: /projects/suara.avif
+image: /projects/suara/cover.avif
 githubUrl: https://github.com/anwarpage/SUARA-230104040212-TUGASAKHIR
 team: M. Kaspul Anwar | https://github.com/anwarpage
 techStack: Kotlin, Jetpack Compose, MVVM & StateFlow, Kotlin Coroutines, Navigation Compose, Appwrite (Auth, Databases, Storage)

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { contentNavLinks } from '@/content/notes';
+import { contentNavLinks } from '@/content/site';
 import { getPublishedProjects } from '@/lib/projects';
 
 export const dynamic = 'force-static';

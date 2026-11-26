@@ -7,8 +7,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "check": "tsc --noEmit",
-    "lint": "eslint ."
+    "check": "tsc --noEmit && npm run validate:content",
+    "lint": "eslint .",
+    "validate:content": "node scripts/validate-content.mjs",
+    "new:project": "node scripts/new-content.mjs project",
+    "new:post": "node scripts/new-content.mjs post"
   },
   "dependencies": {
     "marked": "^17.0.4",

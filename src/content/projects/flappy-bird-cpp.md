@@ -1,12 +1,11 @@
 ---
 title: Flappy Bird - C++ Console Edition
 description: A discrete 2D coordinate simulation and real-time state loop built in C++ using Win32 console buffer manipulation and non-blocking I/O.
-description_id: Simulasi koordinat 2D diskrit dan state loop real-time berbasis C++ menggunakan manipulasi buffer konsol Win32 serta pembacaan input non-blocking.
 date: 2024-03-30
 category: Software Engineering
 tags: C++, Algorithm & Logic, Coordinate Simulation, Windows API, State Loop
 projectType: Personal
-image: /projects/flappy_bird.avif
+image: /projects/flappy-bird-cpp/cover.avif
 githubUrl: https://github.com/mkaspulanwar/Flappy-Bird-Basic-Version-Built-with-Cpp
 team: M. Kaspul Anwar | https://github.com/anwarpage
 techStack: C++, Windows API (windows.h), conio.h, C Standard Library (stdlib.h)
@@ -31,7 +30,7 @@ The game is structured around a deterministic `while(1)` loop paced at `100ms` p
 - **Two-Slot Pipe Recycling (`<stdlib.h>`)**: Rather than allocating new obstacle objects continuously, two active pipe slots (`pipepos`, `gappos`, `pipestat`) are recycled across the `98`-column playfield. When Pipe `0` reaches column `67`, Pipe `1` spawns with a randomized 7-row vertical opening (`3 + rand() % 14`); once Pipe `0` passes column `95`, its state is replaced by Pipe `1` and the score increments.
 - **Interval Collision Detection**: Once an approaching pipe reaches the bird's horizontal zone (`pipepos[0] >= 80`), `collapse()` verifies whether `birdpos` falls outside the safe vertical opening `[gappos[0], gappos[0] + 7]` or touches the bottom border (`birdpos > 28`).
 
-![Runtime Game Loop & Console Buffer Pipeline](/projects/flappy-bird/pipeline-workflow.svg)
+![Runtime Game Loop & Console Buffer Pipeline](/projects/flappy-bird-cpp/pipeline-workflow.svg)
 
 ### Core Loop & Cursor Positioning
 

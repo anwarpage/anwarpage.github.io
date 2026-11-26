@@ -1,12 +1,11 @@
 ---
 title: HafalQ - Al Qur’an App with the Tasmi’ Method
 description: A Flutter Qur'an app built around Tasmi', the listen-and-repeat memorization method, with a repeatable murottal player, offline-tolerant surah data, and location-based prayer times.
-description_id: Aplikasi Al-Qur'an berbasis Flutter yang dibangun di atas metode Tasmi' (dengar dan ulang), dengan pemutar murottal yang bisa diulang, data surah yang tetap tersedia saat offline, dan jadwal salat berbasis lokasi.
 date: 2025-06-22
 category: Mobile
 tags: Quran, Education, Memorization, Flutter
 projectType: Freelance
-image: /projects/hafalq.avif
+image: /projects/hafalq/cover.avif
 githubUrl: https://github.com/anwarpage/HafalQ
 team: Wifda Muna Fatihia, M.Tr.Kom., M. Kaspul Anwar | https://github.com/anwarpage, Muhammad Fahrul Bahri | https://github.com/Theseadev, Akhmad Hafidz Ardianto | https://github.com/Hzkun001, Muhammad Lutfan | https://github.com/MLutfan
 institution: Fakultas Dakwah dan Ilmu Komunikasi UIN Antasari

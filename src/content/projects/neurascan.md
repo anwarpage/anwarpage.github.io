@@ -1,13 +1,12 @@
 ---
 title: NeuraScan - Brain MRI Tumor Segmentation
 description: A web-based medical imaging application for automated brain tumor classification, localization, and pixel-level instance segmentation on MRI scans.
-description_id: Aplikasi web pencitraan medis untuk klasifikasi, lokalisasi kotak pembatas, dan segmentasi instans tingkat piksel otomatis pada citra MRI tumor otak.
 date: 2025-02-01
 category: Machine Learning
 tags: Medical Imaging, Computer Vision, Instance Segmentation, Deep Learning, FastAPI
 projectType: Personal
 team: M. Kaspul Anwar | https://github.com/anwarpage, Andri Rahmadani | https://github.com/AndriRahmadani12, Henny Kartika | https://github.com/hennykartika
-image: /projects/neurascan.avif
+image: /projects/neurascan/cover.avif
 githubUrl: https://github.com/AndriRahmadani12/brain-tumor-web-app
 techStack: Python, PyTorch, Mask R-CNN, Ultralytics YOLO, OpenCV, NumPy, FastAPI, HTML/CSS/JavaScript
 ---

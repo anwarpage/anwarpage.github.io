@@ -1,13 +1,12 @@
 ---
 title: PhishTrace - URL Phishing Detection & Tracker
 description: A local URL safety checker and link tracker powered by a LightGBM hybrid model (TF-IDF + 30 lexical features) trained on Kaggle datasets and served with FastAPI and React.
-description_id: Aplikasi web lokal untuk mengecek dan melacak keamanan URL menggunakan model hybrid LightGBM (TF-IDF + 30 fitur leksikal) dari dataset Kaggle dengan backend FastAPI dan frontend React.
 date: 2026-11-22
 category: Machine Learning
 tags: Cybersecurity, URL Classification, LightGBM, TF-IDF, FastAPI, React
 projectType: Personal
 team: M. Kaspul Anwar | https://github.com/anwarpage
-image: /projects/phishtrace.png
+image: /projects/phishtrace/cover.png
 githubUrl: https://github.com/anwarpage/phishtrace
 techStack: Python, scikit-learn, LightGBM, TF-IDF, FastAPI, Pydantic, Pytest, React, TypeScript, Tailwind CSS
 ---

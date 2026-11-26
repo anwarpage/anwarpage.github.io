@@ -83,3 +83,14 @@ Skema warna **Pure Monochrome** yang tajam dan netral agar teks menjadi fokus ut
 
 1. **Dilarang menggunakan line divider:** Jangan pernah menambahkan garis pemisah horizontal (`<hr>`, `border-b`, atau `border-t`) untuk memisahkan header, navigasi, atau antar-section. Pemisahan antar-bagian harus mengandalkan **whitespace (ruang kosong)** dan hierarki tipografi.
 2. **Border hanya untuk wadah tertutup:** Garis tipis (`--line-subtle`) hanya boleh dipakai sebagai bingkai wadah tertutup (seperti kartu hero, kotak kutipan, bingkai gambar, tombol pill, tabel, dan blok kode)—bukan sebagai garis pemisah bebas.
+
+---
+
+## 5. Prinsip Rekayasa & Konten (YAGNI)
+
+Website ini dibangun dengan prinsip **YAGNI** (*You Aren't Gonna Need It*) — hanya menambahkan teknologi, fitur, atau abstraksi ketika kebutuhan nyatanya sudah ada.
+
+1. **Kesederhanaan di atas kompleksitas:** Jangan menambahkan CMS eksternal, database, library animasi berat, atau fitur spekulatif (seperti multi-bahasa atau MDX) sebelum benar-benar dibutuhkan. Konten dikelola langsung melalui Markdown (`.md`) dan TypeScript (`.ts`) di VS Code + Git.
+2. **Server-first & minim JavaScript:** Pertahankan halaman sebagai Server Component statis (`output: 'export'`). Gunakan `'use client'` hanya pada komponen terkecil yang benar-benar butuh interaksi browser (seperti `ThemeToggle` dan tombol *copy code*).
+3. **Hapus kode & data yang tidak dipakai:** Tidak menyimpan *dead code* atau fitur "siapa tahu nanti perlu" di codebase—semua eksperimen lama tetap aman di riwayat Git.
+4. **Upgrade hanya saat ada kebutuhan nyata:** Jika suatu saat proyek membutuhkan komponen interaktif di tengah artikel (mis. slider *before/after* hasil model Computer Vision), barulah beralih ke MDX secara terukur tanpa membebani arsitektur hari ini.

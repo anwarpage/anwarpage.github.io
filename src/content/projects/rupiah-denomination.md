@@ -1,12 +1,12 @@
 ---
 title: Rupiah Currency Denomination & Sum Detection
+shortTitle: Rupiah Denomination
 description: A YOLOv8 computer vision prototype trained on 2,877 manually photographed Indonesian banknotes to detect multiple denominations and calculate their total value in real time.
-description_id: Prototipe computer vision berbasis YOLOv8 yang dilatih pada 2.877 foto uang kertas Rupiah hasil pemotretan manual untuk mendeteksi multi-nominal dan menghitung total nilainya secara real-time.
 date: 2024-09-06
 category: Machine Learning
 tags: Computer Vision, Object Detection, YOLOv8, Custom Dataset, Accessibility
 projectType: Competition
-image: /projects/rupiah_denomination.avif
+image: /projects/rupiah-denomination/cover.avif
 githubUrl: GitHub (Model) | https://github.com/AndriRahmadani12/penghitung-uang-indonesia-deeplearning, GitHub (Dataset) | https://github.com/mkaspulanwar/rupiah-banknotes-dataset
 team: M. Kaspul Anwar | https://github.com/anwarpage, Andri Rahmadani | https://github.com/AndriRahmadani12, Muhammad Lutfan | https://github.com/MLutfan
 techStack: Python, PyTorch, YOLOv8 (Ultralytics), OpenCV, Roboflow

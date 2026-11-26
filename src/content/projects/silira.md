@@ -1,14 +1,14 @@
 ---
 title: SILIRA - Faculty Aspiration & Response Portal
+shortTitle: Silira
 description: A student aspiration and complaint portal for DPM Fakultas Dakwah dan Ilmu Komunikasi, featuring no-login ticket tracking, three-tier privacy controls, and a response dashboard for student council administrators.
-description_id: Portal layanan aspirasi dan pengaduan mahasiswa untuk DPM Fakultas Dakwah dan Ilmu Komunikasi dengan pelacakan kode tiket tanpa login, opsi privasi tiga tingkat, dan dashboard tindak lanjut pengurus.
 date: 2024-11-09
 category: Website
 tags: Civic Tech, Public Service, Student Government, Laravel, Full-Stack
 projectType: Personal
 team: M. Kaspul Anwar | https://github.com/anwarpage
 institution: DPM Fakultas Dakwah dan Ilmu Komunikasi
-image: /projects/silira.png
+image: /projects/silira/cover.png
 githubUrl: https://github.com/anwarpage/silira
 techStack: PHP, Laravel, Blade, Tailwind CSS, SQLite, MySQL, JavaScript, PHPUnit
 ---

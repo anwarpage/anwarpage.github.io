@@ -1,12 +1,11 @@
 ---
 title: Mobile Banking CLI - Transaction & Search Algorithm in C++
 description: A command-line banking simulation in C++ implementing sequential credential lookup, in-memory balance transitions, and struct-based transaction history.
-description_id: Simulasi layanan perbankan berbasis CLI dengan C++ yang menerapkan pencarian beruntun (sequential search) untuk autentikasi, pembaruan saldo di memori, serta pencatatan mutasi berbasis struct.
 date: 2024-06-19
 category: Software Engineering
 tags: C++, Sequential Search, Data Structures, Algorithm & Logic, CLI Simulation
 projectType: Personal
-image: /projects/mobile_banking.avif
+image: /projects/mobile-banking-cpp/cover.avif
 githubUrl: https://github.com/mkaspulanwar/Mobile-Banking-Algoritm-With-Cpp
 team: M. Kaspul Anwar | https://github.com/anwarpage
 techStack: C++, C++ Standard Library (iostream & string), Struct & 2D Array, Flowgorithm
@@ -29,7 +28,7 @@ The control flow was first mapped in Flowgorithm (`.fprg`) and implemented in `m
 - **Numeric Parsing & Overdraft Validation (`<string>`)**: Since balances are stored as strings inside the 2D array, deposits (`Setoran`) and withdrawals (`Tarik Tunai`) convert values with `std::stoi()`, check `if (tarikan > saldo_sekarang)` to block insufficient-balance withdrawals, and serialize the updated balance back via `std::to_string()`.
 - **Append-Only Mutation Log (`struct Transaksi mutasi[100]`)**: Every completed deposit or withdrawal appends a typed `Transaksi` record (`jenis`, `tanggal`, `jumlah`) at `mutasi[jumlah_transaksi++]`, allowing the `Mutasi Rekening` menu to iterate and print the full session statement.
 
-![Mobile Banking Authentication & Transaction Flow](/projects/mobile-banking/workflow.svg)
+![Mobile Banking Authentication & Transaction Flow](/projects/mobile-banking-cpp/workflow.svg)
 
 ### Sequential Search & Transaction State Update
 

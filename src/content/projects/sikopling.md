@@ -1,12 +1,12 @@
 ---
 title: SIKOPLING - Saluran Interaktif Persetujuan Lingkungan
+shortTitle: Sikopling
 description: A SvelteKit and Supabase public service portal where citizens track environmental approval applications and agency officers manage the queue through a role-protected admin console.
-description_id: Portal layanan publik berbasis SvelteKit dan Supabase untuk memantau antrian persetujuan lingkungan, dengan panel admin berbasis role bagi petugas dinas.
 date: 2026-04-01
 projectType: Freelance
 category: Website
 tags: Civic Tech, Public Service, Environmental Approval, Full-Stack
-image: /projects/sikopling.avif
+image: /projects/sikopling/cover.avif
 liveUrl: https://sikopling.vercel.app/
 githubUrl: https://github.com/anwarpage/sikopling
 team: Adhi Maulana, SP, MT., M. Kaspul Anwar | https://github.com/anwarpage, Akhmad Hafidz Ardianto | https://github.com/Hzkun001

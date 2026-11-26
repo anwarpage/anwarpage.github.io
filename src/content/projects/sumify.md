@@ -1,13 +1,12 @@
 ---
 title: Sumify AI - Meeting Summarizer
 description: An Android meeting assistant backed by a FastAPI pipeline that turns recorded or uploaded meeting audio into transcripts, structured summaries, and downloadable PDF reports.
-description_id: Aplikasi Android asisten rapat dengan backend FastAPI yang mengubah rekaman atau unggahan audio rapat menjadi transkrip, ringkasan terstruktur, dan laporan PDF yang dapat diunduh.
 date: 2026-09-13
 category: Machine Learning
 tags: AI, NLP, Speech Recognition, Summarization, Android
 projectType: Personal
 team: M. Kaspul Anwar | https://github.com/anwarpage, Andri Rahmadani | https://github.com/AndriRahmadani12, Henny Kartika | https://github.com/hennykartika
-image: /projects/sumify.png
+image: /projects/sumify/cover.png
 githubUrl: GitHub (Backend) | https://github.com/hennykartika/sumify-ai, GitHub (Android App) | https://github.com/anwarpage/sumify-ai-fe
 techStack: Kotlin, Jetpack Compose, Retrofit & OkHttp, DataStore, Python, FastAPI, faster-whisper, DeepSeek LLM, Celery & Redis, PostgreSQL, SQLAlchemy & Alembic, MinIO, Playwright
 ---

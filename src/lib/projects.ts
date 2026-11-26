@@ -19,8 +19,8 @@ import { renderMarkdownToHtml } from '@/lib/markdown';
 
 const PROJECT_SCHEMA = {
   title: 'string',
+  shortTitle: 'string',
   description: 'string',
-  description_id: 'string',
   date: 'string',
   category: 'string',
   tags: 'list',
@@ -31,8 +31,8 @@ const PROJECT_SCHEMA = {
   githubUrl: 'list',
   techStack: 'list',
   featured: 'boolean',
-  institution: 'list',
-  institution_id: 'list'
+  draft: 'boolean',
+  institution: 'list'
 } as const satisfies Record<string, FrontmatterFieldType>;
 
 export type ProjectGithubLink = {
@@ -48,6 +48,7 @@ export type ProjectMember = {
 export type ProjectSummary = {
   slug: string;
   title: string;
+  shortTitle: string;
   date: string;
   dateLabel: string;
   year: string;
@@ -61,9 +62,8 @@ export type ProjectSummary = {
   githubLinks: ProjectGithubLink[];
   techStack: string[];
   description: string;
-  descriptionId: string;
   institution: string[];
-  institutionId: string[];
+  draft: boolean;
 };
 
 export type ProjectDetail = ProjectSummary & {
@@ -76,6 +76,12 @@ function asString(value: CoercedFrontmatter[keyof CoercedFrontmatter]) {
 
 function asList(value: CoercedFrontmatter[keyof CoercedFrontmatter]) {
   return Array.isArray(value) ? value.filter((item) => item && item !== '-') : [];
+}
+
+function deriveShortTitle(title: string, explicitShortTitle: string): string {
+  if (explicitShortTitle) return explicitShortTitle;
+  const separatorIndex = title.indexOf(' - ');
+  return separatorIndex < 0 ? title : title.slice(0, separatorIndex).trim();
 }
 
 function asGithubLinks(value: CoercedFrontmatter[keyof CoercedFrontmatter]): ProjectGithubLink[] {
@@ -108,15 +114,13 @@ const getAllProjects = loadContent((): ProjectDetail[] =>
       const description =
         asString(fm.description) ||
         extractDescription(file.body, 'Project notes and implementation details.');
-      const institution = asList(fm.institution);
-      const rawInstitutionId = asList(fm.institution_id);
-
       const category = asString(fm.category) || 'Software';
       const tags = asList(fm.tags);
 
       return {
         slug: file.slug,
         title,
+        shortTitle: deriveShortTitle(title, asString(fm.shortTitle)),
         date,
         dateLabel: formatMonthYear(date),
         year: formatYear(date),
@@ -130,12 +134,12 @@ const getAllProjects = loadContent((): ProjectDetail[] =>
         githubLinks: asGithubLinks(fm.githubUrl),
         techStack: asList(fm.techStack),
         description,
-        descriptionId: asString(fm.description_id) || description,
-        institution,
-        institutionId: rawInstitutionId.length > 0 ? rawInstitutionId : institution,
+        institution: asList(fm.institution),
+        draft: fm.draft === true,
         contentHtml: renderMarkdownToHtml(file.body)
       };
     })
+    .filter((project) => process.env.NODE_ENV !== 'production' || !project.draft)
     .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
 );
 

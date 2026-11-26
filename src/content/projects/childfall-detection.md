@@ -1,12 +1,12 @@
 ---
 title: Telegram Child Fall Detection System with ESP32
+shortTitle: Child Fall Detection
 description: A real-time child fall monitoring system combining ESP32-CAM MJPEG streaming, MediaPipe pose kinematics, multi-frame sequence stitching, and asynchronous Telegram alerts.
-description_id: Sistem pemantauan deteksi anak jatuh secara real-time yang memadukan streaming MJPEG ESP32-CAM, kinematika pose MediaPipe, kolase urutan multi-frame, serta notifikasi asinkron Telegram.
 date: 2025-03-01
 category: Machine Learning
 tags: Computer Vision, Pose Estimation, Fall Detection, IoT, ESP32-CAM
 projectType: Personal
-image: /projects/childfall_detection.avif
+image: /projects/childfall-detection/cover.avif
 # githubUrl: https://github.com/AndriRahmadani12/child-fall-detection-system-iot-deeplearning
 team: M. Kaspul Anwar | https://github.com/anwarpage, Andri Rahmadani | https://github.com/AndriRahmadani12, Henny Kartika | https://github.com/hennykartika, Muhammad Lutfan | https://github.com/MLutfan
 techStack: Python, MediaPipe Pose, OpenCV, NumPy, ESP32-CAM (C/C++), AsyncIO & aiohttp, Telegram Bot API

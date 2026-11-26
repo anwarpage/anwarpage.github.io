@@ -15,7 +15,8 @@ const BLOG_SCHEMA = {
   description: 'string',
   date: 'string',
   category: 'string',
-  mediumUrl: 'string'
+  mediumUrl: 'string',
+  draft: 'boolean'
 } as const;
 
 export type BlogEntry = {
@@ -28,6 +29,7 @@ export type BlogEntry = {
   shortType: string;
   description: string;
   mediumUrl: string | null;
+  draft: boolean;
 };
 
 function asString(value: CoercedFrontmatter[keyof CoercedFrontmatter]) {
@@ -58,9 +60,11 @@ const getAllPosts = loadContent((): BlogEntry[] =>
         shortType: formatShortBlogType(category),
         description:
           asString(fm.description) || extractDescription(file.body, 'Read the full essay on Medium.'),
-        mediumUrl: sanitizeSafeUrl(fm.mediumUrl)
+        mediumUrl: sanitizeSafeUrl(fm.mediumUrl),
+        draft: fm.draft === true
       };
     })
+    .filter((post) => process.env.NODE_ENV !== 'production' || !post.draft)
     .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
 );
 
