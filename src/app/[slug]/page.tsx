@@ -17,6 +17,7 @@ import {
   toolkitGroups
 } from '@/content/site';
 import { getPublishedBlogPosts } from '@/lib/blog';
+import { getLastUpdated, type LastUpdatedInfo } from '@/lib/git-dates';
 import { getProjectBySlug, getPublishedProjects } from '@/lib/projects';
 
 const CORE_SLUGS = contentNavLinks.map((item) => item.slug);
@@ -64,9 +65,9 @@ export async function generateMetadata({
   return { title: 'Not Found' };
 }
 
-function BackBar() {
+function BackBar({ updated }: { updated?: LastUpdatedInfo | null }) {
   return (
-    <nav aria-label="Page navigation" className="mb-8">
+    <nav aria-label="Page navigation" className="mb-8 flex items-center justify-between gap-4">
       <Link
         href="/"
         className="group inline-flex items-center gap-1.5 rounded-full border border-[var(--line-subtle)] bg-[var(--bg)] px-3 py-1.5 font-body text-[13px] font-medium text-[var(--text-secondary)] no-underline transition-all duration-200 hover:border-[var(--line-strong)] hover:bg-[var(--surface-subtle)] hover:text-[var(--text-heading)]"
@@ -88,6 +89,15 @@ function BackBar() {
         </svg>
         <span>Home</span>
       </Link>
+
+      {updated && (
+        <time
+          dateTime={updated.iso}
+          className="font-body text-[12px] tabular-nums text-[var(--text-nav)]"
+        >
+          Updated {updated.label}
+        </time>
+      )}
     </nav>
   );
 }
@@ -102,9 +112,10 @@ export default async function EntryPage({
   /* ── 1. Know me better (/about) ── */
   if (slug === 'about') {
     const bio = bioCopy.en;
+    const updated = getLastUpdated(['src/content/site.ts']);
     return (
       <article className="reading-column">
-        <BackBar />
+        <BackBar updated={updated} />
         <header className="mb-8">
           <h1 className="font-heading text-[34px] leading-[1.15] font-bold tracking-[-0.03em] text-[var(--text-heading)] sm:text-[38px]">
             Who I am
@@ -201,9 +212,10 @@ export default async function EntryPage({
   if (slug === 'contributions') {
     const orgList = organizations.en;
     const honorList = honors.en;
+    const updated = getLastUpdated(['src/content/site.ts']);
     return (
       <article className="reading-column">
-        <BackBar />
+        <BackBar updated={updated} />
         <header className="mb-8">
           <h1 className="font-heading text-[34px] leading-[1.15] font-bold tracking-[-0.03em] text-[var(--text-heading)] sm:text-[38px]">
             Where I&apos;ve contributed
@@ -305,9 +317,10 @@ export default async function EntryPage({
   /* ── 2. See my work (/work) ── */
   if (slug === 'work') {
     const projects = getPublishedProjects();
+    const updated = getLastUpdated(['src/content/projects']);
     return (
       <article className="reading-column">
-        <BackBar />
+        <BackBar updated={updated} />
         <header className="mb-8">
           <h1 className="font-heading text-[34px] leading-[1.15] font-bold tracking-[-0.03em] text-[var(--text-heading)] sm:text-[38px]">
             What I&apos;ve built
@@ -359,9 +372,10 @@ export default async function EntryPage({
   /* ── 3. Things I wrote (/writing) ── */
   if (slug === 'writing') {
     const posts = getPublishedBlogPosts();
+    const updated = getLastUpdated(['src/content/blog', 'src/content/site.ts']);
     return (
       <article className="reading-column">
-        <BackBar />
+        <BackBar updated={updated} />
         <header className="mb-8">
           <h1 className="font-heading text-[34px] leading-[1.15] font-bold tracking-[-0.03em] text-[var(--text-heading)] sm:text-[38px]">
             What I&apos;ve written
@@ -435,9 +449,10 @@ export default async function EntryPage({
 
   /* ── 4. Things I believe (/beliefs) ── */
   if (slug === 'beliefs') {
+    const updated = getLastUpdated(['src/content/notes.ts']);
     return (
       <article className="reading-column">
-        <BackBar />
+        <BackBar updated={updated} />
         <header className="mb-8">
           <h1 className="font-heading text-[34px] leading-[1.15] font-bold tracking-[-0.03em] text-[var(--text-heading)] sm:text-[38px]">
             What I believe
